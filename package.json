@@ -1,0 +1,25 @@
+{
+  "name": "slackbot",
+  "version": "1.0.0",
+  "description": "DevOps 21 Course project repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/racemaus/SlackBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/racemaus/SlackBot/issues"
+  },
+  "homepage": "https://github.com/racemaus/SlackBot#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.7.0",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.13"
+  }
+}
