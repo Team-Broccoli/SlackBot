@@ -8,6 +8,30 @@ const app = new App({
     appToken: process.env.APP_TOKEN
 });
 
+
+app.command("/hellosale", async ({ command, ack, say }) => {
+    try {
+        await ack();
+        say("Hello Sale o7");
+    } catch (error) {
+        console.log("err")
+        console.error(error);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (async () => {
     const port = 3000
 
