@@ -21,16 +21,6 @@ app.command("/hellosale", async ({ command, ack, say }) => {
     }
 });
 
-//Loppukiri
-app.command("/loppukiri", async ({ command, ack, say }) => {
-    try {
-        await ack();
-        say("https://64.media.tumblr.com/23f3faac83840f07ef68c8a5a2b28eb5/tumblr_ntg4pqCLev1ue5te7o1_500.jpg");
-    } catch (error) {
-        console.error(error);
-    }
-});
-
 //Who is?
 app.command("/whoissale", async ({ command, ack, say }) => {
     try {
@@ -41,11 +31,35 @@ app.command("/whoissale", async ({ command, ack, say }) => {
     }
 });
 
-//Lennu
-app.command("/lennu", async ({ command, ack, say }) => {
+/*** COMMANDS WITH FILE UPLOAD ***/
+
+//Loppukiri
+app.command("/loppukiri", async ({ message, client }) => {
+    const image = "./media/loppukiri.jpg";
     try {
-        await ack();
-        say("https://i.imgur.com/Cl3R9Fw.jpeg");
+        const result = await client.files.upload({
+            channels: channelId,
+            initial_comment: "Salen loppukiri",
+            file: fs.createReadStream(image),
+            filetype: "jpg"
+        });
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+//Lennu
+app.command("/lennu", async ({ message, client }) => {
+    const image = "./media/lennu.jpeg";
+    try {
+        const result = await client.files.upload({
+            channels: channelId,
+            initial_comment: "Lennu C:",
+            file: fs.createReadStream(image),
+            filetype: "jpg"
+        });
+        console.log(result);
     } catch (error) {
         console.error(error);
     }
