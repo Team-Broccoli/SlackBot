@@ -1,5 +1,6 @@
 const { App } = require("@slack/bolt");
 require("dotenv").config();
+const fs = require('fs');
 
 const app = new App({
     token: process.env.SLACK_BOT_TOKEN,
@@ -57,7 +58,7 @@ app.command("/uploadtest", async ({ message, client }) => {
         const result = await client.files.upload({
             channels: channelId,
             initial_comment: "Here's Sale",
-            file: image,
+            file: fs.createReadStream(image),
             filetype: "jpg"
         });
         console.log(result);
