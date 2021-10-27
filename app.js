@@ -34,7 +34,7 @@ app.command("/loppukiri", async ({ command, ack, say }) => {
 app.command("/whoissale", async ({ command, ack, say }) => {
     try {
         await ack();
-        say("Sauli Väinämö Niinstö is the president of Finland");
+        say("Sauli Väinämö Niinistö is the president of Finland");
     } catch (error) {
         console.error(error);
     }
@@ -59,7 +59,8 @@ app.command("/uploadtest", async ({ message, client }) => {
             initial_comment: "Here's Sale",
             file: image,
             filetype: "jpg"
-          });
+        });
+        console.log(result);
     } catch (error) {
         console.error(error);
     }
