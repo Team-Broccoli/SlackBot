@@ -8,27 +8,47 @@ const app = new App({
     appToken: process.env.APP_TOKEN
 });
 
+//const channelId = process.env.CHANNEL_ID;
 
+//Hello world
 app.command("/hellosale", async ({ command, ack, say }) => {
     try {
         await ack();
         say("Hello Sale o7");
     } catch (error) {
-        console.log("err")
         console.error(error);
     }
 });
 
+//Loppukiri
+app.command("/loppukiri", async ({ command, ack, say }) => {
+    try {
+        await ack();
+        say("https://64.media.tumblr.com/23f3faac83840f07ef68c8a5a2b28eb5/tumblr_ntg4pqCLev1ue5te7o1_500.jpg");
+    } catch (error) {
+        console.error(error);
+    }
+});
 
+//Who is?
+app.command("/whoissale", async ({ command, ack, say }) => {
+    try {
+        await ack();
+        say("Sauli Väinämö Niinstö is the president of Finland");
+    } catch (error) {
+        console.error(error);
+    }
+});
 
-
-
-
-
-
-
-
-
+//Lennu
+app.command("/lennu", async ({ command, ack, say }) => {
+    try {
+        await ack();
+        say("https://i.imgur.com/Cl3R9Fw.jpeg");
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 
 
