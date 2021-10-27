@@ -58,9 +58,10 @@ app.command("/sale-email", async ({ command, ack, say }) => {
 /*** COMMANDS WITH FILE UPLOAD ***/
 
 //Loppukiri
-app.command("/loppukiri", async ({ message, client }) => {
+app.command("/loppukiri", async ({ message, client, ack }) => {
     const image = "./media/loppukiri.jpg";
     try {
+        await ack();
         const result = await client.files.upload({
             channels: channelId,
             initial_comment: "Salen loppukiri",
@@ -74,8 +75,9 @@ app.command("/loppukiri", async ({ message, client }) => {
 });
 
 //Lennu
-app.command("/lennu", async ({ message, client }) => {
+app.command("/lennu", async ({ message, client, ack }) => {
     const image = "./media/lennu.jpeg";
+    await ack();
     try {
         const result = await client.files.upload({
             channels: channelId,
@@ -90,8 +92,9 @@ app.command("/lennu", async ({ message, client }) => {
 });
 
 //File uploading
-app.command("/uploadtest", async ({ message, client }) => {
+app.command("/uploadtest", async ({ message, client, ack }) => {
     const image = "./media/sale.jpg";
+    await ack();
     try {
         const result = await client.files.upload({
             channels: channelId,
@@ -106,8 +109,9 @@ app.command("/uploadtest", async ({ message, client }) => {
 });
 
 //Perjantai
-app.command("/perjantai", async ({ message, client }) => {
+app.command("/perjantai", async ({ message, client, ack }) => {
     const image = "./media/perjantai.jpg";
+    await ack();
     try {
         const result = await client.files.upload({
             channels: channelId,
