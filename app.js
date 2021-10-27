@@ -8,7 +8,7 @@ const app = new App({
     appToken: process.env.APP_TOKEN
 });
 
-//const channelId = process.env.CHANNEL_ID;
+const channelId = process.env.CHANNEL_ID;
 
 //Hello world
 app.command("/hellosale", async ({ command, ack, say }) => {
@@ -50,6 +50,20 @@ app.command("/lennu", async ({ command, ack, say }) => {
     }
 });
 
+//File uploading
+app.command("/uploadtest", async ({ message, client }) => {
+    const image = "./media/sale.jpg";
+    try {
+        const result = await client.files.upload({
+            channels: channelId,
+            initial_comment: "Here's Sale",
+            file: image,
+            filetype: "jpg"
+          });
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 
 (async () => {
