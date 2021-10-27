@@ -1,9 +1,9 @@
 version: 0.2
 phases:
-  	pre_build:
+  	install:
     	commands:
       		- echo Installing source NPM dependencies...
-      		- npm install
+      		- npm install @slack/bolt
   	build:
 		commands:
 			- echo Build started on `date`
@@ -15,3 +15,5 @@ phases:
 artifacts:
 	files:
 		- app.js
+		- media/*
+		- node_modules/**/*
