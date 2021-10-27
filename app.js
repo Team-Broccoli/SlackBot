@@ -33,7 +33,7 @@ app.command("/whoissale", async ({ command, ack, say }) => {
 });
 
 //Sale sending SMS?
-app.command("/salesms", async ({ command, ack, say }) => {
+app.command("/sale-email", async ({ command, ack, say }) => {
     try {
         await ack();
         const sns = new AWS.SNS({ apiVersion: "2010-03-31" });
@@ -48,7 +48,7 @@ app.command("/salesms", async ({ command, ack, say }) => {
               console.log("Successfully published.", data);
             }
           });
-        say("Sale sent SMS via AWS SNS!");
+        say("Sale sent email via AWS SNS!");
         
     } catch (error) {
         console.error(error);
