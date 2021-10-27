@@ -1,6 +1,7 @@
 const { App } = require("@slack/bolt");
 require("dotenv").config();
 const fs = require('fs');
+const AWS = require("aws-sdk");
 
 const app = new App({
     token: process.env.SLACK_BOT_TOKEN,
@@ -26,6 +27,29 @@ app.command("/whoissale", async ({ command, ack, say }) => {
     try {
         await ack();
         say("Sauli Väinämö Niinistö is the president of Finland");
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+//Sale sending SMS?
+app.command("/salesms", async ({ command, ack, say }) => {
+    try {
+        await ack();
+        const sns = new AWS.SNS({ apiVersion: "2010-03-31" });
+        const params = {
+            "Message": command.text,
+            "TopicArn": "arn:aws:sns:eu-central-1:657960601194:SaleTopic"
+        };
+        sns.publish(params, (err, data) => {
+            if (err) {
+              console.log("There was an Error: ", err);
+            } else {
+              console.log("Successfully published.", data);
+            }
+          });
+        say("Sale sent SMS via AWS SNS!");
+        
     } catch (error) {
         console.error(error);
     }

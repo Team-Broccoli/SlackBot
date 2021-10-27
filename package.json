@@ -20,7 +20,9 @@
   "homepage": "https://github.com/racemaus/SlackBot#readme",
   "dependencies": {
     "@slack/bolt": "^3.7.0",
+    "aws-sdk": "^2.1015.0",
     "dotenv": "^10.0.0",
+    "ngrok": "^4.2.2",
     "nodemon": "^2.0.13"
   }
 }
