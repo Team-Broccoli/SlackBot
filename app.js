@@ -105,6 +105,21 @@ app.command("/uploadtest", async ({ message, client }) => {
     }
 });
 
+//Perjantai
+app.command("/perjantai", async ({ message, client }) => {
+    const image = "./media/perjantai.jpg";
+    try {
+        const result = await client.files.upload({
+            channels: channelId,
+            initial_comment: ":face_with_cowboy_hat:",
+            file: fs.createReadStream(image),
+            filetype: "jpg"
+        });
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 (async () => {
     const port = 3000
