@@ -131,3 +131,20 @@ app.command("/perjantai", async ({ message, client, ack }) => {
     await app.start(process.env.PORT || port);
     console.log(`SaleBot is running on port ${port}!`);
 })();
+
+async function testConnection() {
+    const result = await app.client.chat.postMessage({
+        text: 'Sale woke up!',
+        channel: channelId,
+    });
+    //console.log(result)
+    return result.message.text
+}
+
+function uselessFuncForTesting(amItrue) {
+
+    return amItrue
+}
+
+module.exports.testConnection = testConnection;
+module.exports.uselessFuncForTesting = uselessFuncForTesting;
