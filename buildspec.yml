@@ -1,4 +1,15 @@
 version: 0.2
+
+env:
+  secrets-manager:
+    SLACK_SIGNING_SECRET: "SLACK_SIGNIN:MY_SECRET_VAR"
+    SLACK_BOT_TOKEN: "SLACK_BOT:MY_SECRET_VAR"
+    APP_TOKEN: "APP_TOKEN:MY_SECRET_VAR"
+    CHANNEL: "CHANNEL:MY_SECRET_VAR"
+    AWS_ACCESS_KEY_ID: "AWS_ACCESS:MY_SECRET_VAR"
+    AWS_SECRET_ACCESS_KEY: "AWS_SECRET:MY_SECRET_VAR"
+    AWS_REGION: "AWS_REGION:MY_SECRET_VAR"
+
 phases:
   install:
     runtime-versions:
@@ -7,9 +18,12 @@ phases:
     commands:
     - echo Installing source NPM dependencies...
     - npm install
+    - npm install yarn -g
   build:
     commands:
     - echo Build started on `date`
+    - yarn install
+    - yarn test
   post_build:
     commands:
     - echo Build completed on `date`
